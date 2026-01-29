@@ -6,10 +6,9 @@ from datetime import datetime, timezone
 
 def main():
     # SET TO TRUE FOR TESTING, FALSE FOR SUBMISSION
-    DRY_RUN = True 
+    DRY_RUN = False
     
     SECRET = os.environ.get("B12_SIGNING_SECRET", "dummy-secret-if-testing-locally")
-    print(SECRET)
     repo_path = os.getenv("GITHUB_REPOSITORY", "https://github.com/NabeelAhmed314")
     run_id = os.getenv("GITHUB_RUN_ID", "123456789")
 
