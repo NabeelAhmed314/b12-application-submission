@@ -1,0 +1,27 @@
+name: B12 Submission CI
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  run-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Requests
+        run: pip install requests
+
+      - name: Run Script
+        env:
+          # This connects the GitHub Secret to the Python script
+          B12_SIGNING_SECRET: ${{ secrets.B12_SIGNING_SECRET }}
+        run: python submit.py
